@@ -1,11 +1,16 @@
+from LinkedList import LinkedList
 from StockAccount import *
 from Companies import *
 import json
 
 if __name__ == "__main__":
     print("Commercial Data Processing")
+
+    llist = LinkedList()
     while True:
-        print("Enter 1 to create account\n 2 to access account")
+        print("Enter 1 to create account\n2 to access account")
+        print("3 to add company share\n4 to remove company share")
+        print("5 to show companies shares")
         option = int(input())
         if option == 1:
             userName = input("Enter your name : ")
@@ -31,6 +36,26 @@ if __name__ == "__main__":
                 break
             except FileNotFoundError:
                 print("Account not available")
+
+        elif option == 3:
+            SharePrice = int(input("Enter share price : "))
+            StockName = input("Enter Stock name : ")
+            StockSymbol = input("Enter the stock symbol : ")
+            NoOfShare = int(input("Enter the no. of shares : "))
+            data = {
+                "SharePrice": SharePrice,
+                "StockName": StockName,
+                "StockSymbol": StockSymbol,
+                "NoOfShare": NoOfShare,
+            }
+            llist.insert(data)
+
+        elif option == 4:
+            StockSymbol = input("Enter Stock symbol : ")
+            llist.delete(StockSymbol)
+
+        elif option == 5:
+            llist.show_Data()
 
     account = StockAccount(accountFile)
     companies = Companies()
