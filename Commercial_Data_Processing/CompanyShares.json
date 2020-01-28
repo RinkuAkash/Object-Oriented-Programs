@@ -1,0 +1,70 @@
+{
+    "StockDetails": [
+        {
+            "SharePrice": 895,
+            "StockName": "Bridgelabz",
+            "StockSymbol": "Bri",
+            "NoOfShare": 456
+        },
+        {
+            "SharePrice": 896,
+            "StockName": "Accenture",
+            "StockSymbol": "Acc",
+            "NoOfShare": 873
+        },
+        {
+            "SharePrice": 897,
+            "StockName": "Infosys",
+            "StockSymbol": "Inf",
+            "NoOfShare": 673
+        },
+        {
+            "SharePrice": 898,
+            "StockName": "Nitor",
+            "StockSymbol": "Nit",
+            "NoOfShare": 532
+        },
+        {
+            "SharePrice": 899,
+            "StockName": "Capgemini",
+            "StockSymbol": "Cap",
+            "NoOfShare": 378
+        },
+        {
+            "SharePrice": 12,
+            "StockName": "Microsoft",
+            "StockSymbol": "Mic",
+            "NoOfShare": 673
+        },
+        {
+            "SharePrice": 1,
+            "StockName": "Apple",
+            "StockSymbol": "App",
+            "NoOfShare": 695
+        },
+        {
+            "SharePrice": 12,
+            "StockName": "Google",
+            "StockSymbol": "Goo",
+            "NoOfShare": 100
+        },
+        {
+            "SharePrice": 456,
+            "StockName": "Tesla",
+            "StockSymbol": "Tes",
+            "NoOfShare": 123
+        },
+        {
+            "SharePrice": 213,
+            "StockName": "TCS",
+            "StockSymbol": "Tcs",
+            "NoOfShare": 300
+        },
+        {
+            "SharePrice": 123,
+            "StockName": "Airbus",
+            "StockSymbol": "Air",
+            "NoOfShare": 12
+        }
+    ]
+}
