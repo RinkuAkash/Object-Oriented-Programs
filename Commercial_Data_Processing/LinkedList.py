@@ -36,3 +36,4 @@ class LinkedList:
         while temp is not None:
             print(temp.data)
             temp = temp.next
+
