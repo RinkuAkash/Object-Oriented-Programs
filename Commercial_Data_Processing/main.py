@@ -1,4 +1,5 @@
 from LinkedList import LinkedList
+from stack import Stack
 from StockAccount import *
 from Companies import *
 import json
@@ -59,6 +60,7 @@ if __name__ == "__main__":
 
     account = StockAccount(accountFile)
     companies = Companies()
+    stack = Stack()
     while True:
         print("Enter")
         print("1 for total value")
@@ -66,6 +68,8 @@ if __name__ == "__main__":
         print("3 for sell share")
         print("4 save account")
         print("5 print report")
+        print("6 print stack")
+        print("7 print queue")
         print("0 to exit")
 
         option = int(input())
@@ -83,6 +87,7 @@ if __name__ == "__main__":
             else:
                 amount = check
                 account.buy(amount, shares, symbol)
+                stack.purchase(symbol)
                 print("Transaction successfull")
 
         elif option == 3:
@@ -91,6 +96,7 @@ if __name__ == "__main__":
             share_price = companies.get_price(symbol)
             if share_price > -1 and account.sell(shares, symbol, share_price):
                 companies.add_shares(symbol, shares)
+                stack.sell()
                 print("Transaction successful")
             else:
                 print("Transaction unsuccessful")
@@ -101,6 +107,9 @@ if __name__ == "__main__":
 
         elif option == 5:
             account.printReport()
+        
+        elif option == 6:
+            stack.show()
 
         elif option == 0:
             break
