@@ -1,0 +1,70 @@
+{
+    "Doctors": [
+        {
+            "Availability": "Both",
+            "Specialization": "Cardiologist",
+            "Id": "99",
+            "Name": "Shanmukh",
+            "Appointments": {
+                "total": 7,
+                "02/02/2020": 5,
+                "03/02/2020": 2
+            }
+        },
+        {
+            "Availability": "AM",
+            "Specialization": "Physician",
+            "Id": "1",
+            "Name": "Pooja",
+            "Appointments": {
+                "total": 0
+            }
+        },
+        {
+            "Availability": "PM",
+            "Specialization": "Physician",
+            "Id": "2",
+            "Name": "Vivek",
+            "Appointments": {
+                "total": 0
+            }
+        },
+        {
+            "Availability": "AM",
+            "Specialization": "Cardiologist",
+            "Id": "3",
+            "Name": "Karthik",
+            "Appointments": {
+                "total": 0
+            }
+        },
+        {
+            "Availability": "PM",
+            "Specialization": "Neurologist",
+            "Id": "6",
+            "Name": "Teja",
+            "Appointments": {
+                "total": 0
+            }
+        },
+        {
+            "Availability": "AM",
+            "Specialization": "Neurologist",
+            "Id": "12234",
+            "Name": "Prasad",
+            "Appointments": {
+                "total": 0
+            }
+        },
+        {
+            "Availability": "AM",
+            "Specialization": "Physician",
+            "Id": "54",
+            "Name": "Srinu",
+            "Appointments": {
+                "total": 1,
+                "05/02/2020": 1
+            }
+        }
+    ]
+}
