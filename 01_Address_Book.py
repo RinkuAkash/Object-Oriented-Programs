@@ -99,7 +99,7 @@ if __name__ == "__main__":
     listOfBooks = books.printBooks()
     for book in listOfBooks.keys():
         print(book)
-    selectedBook = input()+'.json'
+    selectedBook = input()
 
     liveBook = listOfBooks[selectedBook]
     flag = True
@@ -125,9 +125,8 @@ if __name__ == "__main__":
         option = int(input())
 
         if option == 0:
-            lastName, firstName = map(
-                str, input("Enter lastname and first name : ").split()
-            )
+            lastName = input("Enter lastname : ")
+            firstName = input("Enter firstname : ")
             liveBook.view(firstName, lastName)
 
         elif option == 1:
@@ -137,16 +136,14 @@ if __name__ == "__main__":
                 print("Entry failed, User already present")
 
         elif option == 2:
-            lastName, firstName = map(
-                str, input("Enter lastname and firstname to delete : ").split()
-            )
+            lastName = input("Enter lastname : ")
+            firstName = input("Enter firstname : ")
             liveBook.deleteEntry(firstName, lastName)
             print("Deleted successfully")
 
         elif option == 3:
-            lastName, firstName = map(
-                str, input("Enter lastname and firstname :").split()
-            )
+            lastName = input("Enter lastname : ")
+            firstName = input("Enter firstname : ")
             elementType = input(
                 "Enter type (ex. address,city,state,pincode,phone-number) : "
             )
