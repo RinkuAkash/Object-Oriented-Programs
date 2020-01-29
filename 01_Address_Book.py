@@ -95,11 +95,11 @@ if __name__ == "__main__":
             if check == 1:
                 break
 
-    print("Select address book: ")
+    print("Select address book : ")
     listOfBooks = books.printBooks()
     for book in listOfBooks.keys():
         print(book)
-    selectedBook = input()
+    selectedBook = input()+'.json'
 
     liveBook = listOfBooks[selectedBook]
     flag = True
