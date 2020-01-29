@@ -18,10 +18,17 @@ if __name__=='__main__':
 
     cards=DeckOfCards()
     cards.Shuffle()
-    print(np.array([
-        cards.distribute(9),
-        cards.distribute(9),
-        cards.distribute(9),
-        cards.distribute(9)
-    ])
-    )
+
+    player1 = cards.distribute(9)
+    player2 = cards.distribute(9)
+    player3 = cards.distribute(9)
+    player4 = cards.distribute(9)
+
+    print('player1 cards')
+    player1.show()
+    print('\nplayer2 cards')
+    player2.show()
+    print('\nplayer3 cards')
+    player3.show()
+    print('\nplayer4 cards')
+    player4.show()
