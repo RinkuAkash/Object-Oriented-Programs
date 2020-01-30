@@ -1,3 +1,5 @@
+from node import node
+
 """
 Created on 28/01/2020
 @author: B Akash
@@ -7,8 +9,6 @@ Problem statement:
 Further maintain DateTime of the transaction in a Queue
  implemented using Linked List to indicate when the transactions were done.
 """
-
-from node import node
 
 
 class Queue:
@@ -47,7 +47,64 @@ class Queue:
             return True
 
     def show(self):
-        temp=self.front
-        while(temp is not None):
+        temp = self.front
+        while temp is not None:
             print(temp.suit, "of", temp.rank)
-            temp=temp.next
+            temp = temp.next
+
+    def merge(self, first_node, second_node):
+        if first_node is None:
+            return second_node
+
+        if second_node is None:
+            return first_node
+
+        firstNodeRank = first_node.rank
+        secondNodeRank = second_node.rank
+        checkList = ["2", "3", "4", "5", "6", "7", "8", "9", "10"]
+        if firstNodeRank in checkList and secondNodeRank in checkList:
+            firstNodeRank = int(firstNodeRank)
+            secondNodeRank = int(secondNodeRank)
+
+        if firstNodeRank < secondNodeRank:
+            first_node.next = self.merge(first_node.next, second_node)
+            first_node.next.prev = first_node
+            first_node.prev = None
+            return first_node
+
+        else:
+            second_node.next = self.merge(first_node, second_node.next)
+            second_node.next.prev = second_node
+            second_node.prev = None
+            return second_node
+
+    def mergeSort(self, head):
+        if head is None:
+            return head
+        if head.next is None:
+            return head
+
+        second_node = self.mid(head)
+
+        head = self.mergeSort(head)
+        second_node = self.mergeSort(second_node)
+
+        return self.merge(head, second_node)
+
+    def mid(self, head):
+        fast = slow = head
+
+        while True:
+            if fast.next is None:
+                break
+            if fast.next.next is None:
+                break
+            fast = fast.next.next
+            slow = slow.next
+
+        mid = slow.next
+        slow.next = None
+        return mid
+
+    def sort(self):
+        self.front = self.mergeSort(self.front)
