@@ -12,40 +12,41 @@ class AddressBook:
     def __init__(self):
         self.book = dict()
 
-    def returnBook(self):
+    def return_book(self):
         return self.book
 
-    def addEntry(self):
-        firstName = input("Enter firstname : ")
-        lastName = input("Enter lastname : ")
-        if lastName + firstName not in self.book:
+    def add_entry(self):
+        first_name = input("Enter firstname : ")
+        last_name = input("Enter lastname : ")
+        if last_name + first_name not in self.book:
             address = input("Enter address : ")
             city = input("Enter city : ")
             state = input("Enter state : ")
-            pinCode = int(input("Enter pincode(integers only) : "))
-            phoneNumber = int(input("Enter phone number : "))
-            self.book[lastName + firstName] = [
+            pincode = int(input("Enter pincode(integers only) : "))
+            phone_number = int(input("Enter phone number : "))
+            self.book[last_name + first_name] = [
                 {
                     "address": address,
                     "city": city,
                     "state": state,
-                    "pincode": pinCode,
-                    "phone-number": phoneNumber,
+                    "pincode": pincode,
+                    "phone-number": phone_number,
                 }
             ]
             return True
         else:
             return False
 
-    def deleteEntry(self, firstName, lastName):
-        del self.book[lastName + firstName]
+    def delete_entry(self, first_name, last_name):
+        del self.book[last_name + first_name]
 
-    def sortBook(self, key):
+    def sort_book(self, key):
         if key == "name":
             self.book = {
                 key: value
                 for key, value in sorted(
-                    self.book.items(), key=lambda keyValue: (keyValue[0], keyValue[1])
+                    self.book.items(),
+                    key=lambda key_value: (key_value[0], key_value[1]),
                 )
             }
         else:
@@ -53,16 +54,18 @@ class AddressBook:
                 key: value
                 for (key, value) in sorted(
                     self.book.items(),
-                    key=lambda keyValue: (keyValue[1][0]["pincode"], keyValue[0]),
+                    key=lambda key_value: (
+                        key_value[1][0]["pincode"], key_value[0]
+                        ),
                 )
             }
 
-    def editEntry(self, firstName, lastName, elementType, element):
-        self.book[lastName + firstName][0][elementType] = element
+    def edit_entry(self, first_name, last_name, element_type, element):
+        self.book[last_name + first_name][0][element_type] = element
 
-    def view(self, firstName, lastName):
-        if lastName + firstName in self.book:
-            for key, value in self.book[lastName + firstName][0].items():
+    def view(self, first_name, last_name):
+        if last_name + first_name in self.book:
+            for key, value in self.book[last_name + first_name][0].items():
                 print(key, ":", value)
         else:
             print("User not found")
@@ -72,13 +75,13 @@ class AddressBookManager:
     def __init__(self):
         self.books = dict()
 
-    def printBooks(self):
+    def print_books(self):
         return self.books
 
-    def addBook(self, name):
+    def add_book(self, name):
         self.books[name] = AddressBook()
 
-    def deleteBook(self, name):
+    def delete_book(self, name):
         del self.books[name]
 
 
@@ -86,27 +89,27 @@ if __name__ == "__main__":
     print("Address Book Management")
     books = AddressBookManager()
 
-    if len(books.printBooks()) == 0:
+    if len(books.print_books()) == 0:
         print("Your address book is empty create new address book")
         while True:
             name = input("Enter new address book name : ")
-            books.addBook(name)
+            books.add_book(name)
             check = int(input("Enter 0 to add new book\n 1 to select book\n"))
             if check == 1:
                 break
 
     print("Select address book : ")
-    listOfBooks = books.printBooks()
-    for book in listOfBooks.keys():
+    list_of_books = books.print_books()
+    for book in list_of_books.keys():
         print(book)
-    selectedBook = input()
+    selected_book = input()
 
-    liveBook = listOfBooks[selectedBook]
+    live_book = list_of_books[selected_book]
     flag = True
     while flag:
         print("Your Address Book")
-        if len(liveBook.returnBook()) > 0:
-            for book in liveBook.returnBook():
+        if len(live_book.return_book()) > 0:
+            for book in live_book.return_book():
                 print(book)
 
         print("select option by entering number")
@@ -125,39 +128,39 @@ if __name__ == "__main__":
         option = int(input())
 
         if option == 0:
-            lastName = input("Enter lastname : ")
-            firstName = input("Enter firstname : ")
-            liveBook.view(firstName, lastName)
+            last_name = input("Enter lastname : ")
+            first_name = input("Enter firstname : ")
+            live_book.view(first_name, last_name)
 
         elif option == 1:
-            if liveBook.addEntry():
+            if live_book.add_entry():
                 print("Entry successful")
             else:
                 print("Entry failed, User already present")
 
         elif option == 2:
-            lastName = input("Enter lastname : ")
-            firstName = input("Enter firstname : ")
-            liveBook.deleteEntry(firstName, lastName)
+            last_name = input("Enter lastname : ")
+            first_name = input("Enter firstname : ")
+            live_book.delete_entry(first_name, last_name)
             print("Deleted successfully")
 
         elif option == 3:
-            lastName = input("Enter lastname : ")
-            firstName = input("Enter firstname : ")
-            elementType = input(
+            last_name = input("Enter lastname : ")
+            first_name = input("Enter firstname : ")
+            element_type = input(
                 "Enter type (ex. address,city,state,pincode,phone-number) : "
             )
             element = input("Enter new data : ")
-            if elementType == "pincode":
+            if element_type == "pincode":
                 element = int(element)
-            liveBook.editEntry(firstName, lastName, elementType, element)
+            live_book.edit_entry(first_name, last_name, element_type, element)
             print("Edit successful")
 
         elif option == 4:
-            liveBook.sortBook("name")
+            live_book.sort_book("name")
 
         elif option == 5:
-            liveBook.sortBook("pincode")
+            live_book.sort_book("pincode")
 
         elif option == 6:
             flag = False
