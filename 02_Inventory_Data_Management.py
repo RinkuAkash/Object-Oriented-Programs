@@ -6,11 +6,11 @@ Created on 25/01/2020
 """
 """
 Problem Statement:
-    Create a JSON file having Inventory Details for Rice, Pulses and Wheats 
-        with properties name, weight, price per kg. 
+    Create a JSON file having Inventory Details for Rice, Pulses and Wheats
+        with properties name, weight, price per kg.
 """
 
-jsonData = {
+json_data = {
     "Rice": [
         {"name": "Basmati", "weight": 1000, "price": 95},
         {"name": "Kurnool", "weight": 840, "price": 44},
@@ -34,12 +34,12 @@ class Inventory:
             self.item = "Pulses"
         elif key == 3:
             self.item = "Wheat"
-        self.inventory = json.dumps(jsonData, indent=4)
+        self.inventory = json.dumps(json_data, indent=4)
 
-    def getList(self):
-        itemType = self.item
+    def get_list(self):
+        item_type = self.item
         unload = json.loads(self.inventory)
-        return unload[itemType]
+        return unload[item_type]
 
 
 print("Inventory Data Management")
@@ -49,7 +49,7 @@ key = int(input())
 
 if key in [1, 2, 3]:
     obj = Inventory(key)
-    items = obj.getList()
+    items = obj.get_list()
 
     for item_index in range(0, len(items)):
         print(
