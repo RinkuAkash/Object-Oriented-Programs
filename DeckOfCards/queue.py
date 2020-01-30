@@ -16,21 +16,21 @@ class Queue:
         self.front = None
         self.rear = None
 
-    def addFront(self, suit, rank):
+    def add_front(self, suit, rank):
         if self.front == self.rear is None:
             self.front = self.rear = node(suit, rank)
         else:
             self.front.prev = node(suit, rank)
             self.front = self.front.prev
 
-    def addRear(self, suit, rank):
+    def add_rear(self, suit, rank):
         if self.rear == self.front is None:
             self.rear = self.front = node(suit, rank)
         else:
             self.rear.next = node(suit, rank)
             self.rear = self.rear.next
 
-    def deleteFront(self):
+    def delete_front(self):
         if self.front is None:
             return False
         else:
@@ -38,7 +38,7 @@ class Queue:
             self.front.prev = None
             return True
 
-    def deleteRear(self):
+    def delete_rear(self):
         if self.rear is None:
             return False
         else:
@@ -59,14 +59,17 @@ class Queue:
         if second_node is None:
             return first_node
 
-        firstNodeRank = first_node.rank
-        secondNodeRank = second_node.rank
+        # checking node ranks and converting to integer
+        # to achieve comparision
+        first_node_rank = first_node.rank
+        second_node_rank = second_node.rank
         checkList = ["2", "3", "4", "5", "6", "7", "8", "9", "10"]
-        if firstNodeRank in checkList and secondNodeRank in checkList:
-            firstNodeRank = int(firstNodeRank)
-            secondNodeRank = int(secondNodeRank)
 
-        if firstNodeRank < secondNodeRank:
+        if first_node_rank in checkList and second_node_rank in checkList:
+            first_node_rank = int(first_node_rank)
+            second_node_rank = int(second_node_rank)
+
+        if first_node_rank < second_node_rank:
             first_node.next = self.merge(first_node.next, second_node)
             first_node.next.prev = first_node
             first_node.prev = None
@@ -84,14 +87,14 @@ class Queue:
         if head.next is None:
             return head
 
-        second_node = self.mid(head)
-
+        second_node = self.mid_node(head)
         head = self.mergeSort(head)
         second_node = self.mergeSort(second_node)
 
         return self.merge(head, second_node)
 
-    def mid(self, head):
+    # mid method is used to get mid node
+    def mid_node(self, head):
         fast = slow = head
 
         while True:

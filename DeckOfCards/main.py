@@ -1,4 +1,4 @@
-from DeckOfCards import DeckOfCards
+from deck_of_cards import DeckOfCards
 
 """
 Created on 29/01/2020
@@ -19,12 +19,12 @@ if __name__ == "__main__":
 
     cards = DeckOfCards()
     cards.Shuffle()
-
-    player1 = cards.distribute(9)
-    player2 = cards.distribute(9)
-    player3 = cards.distribute(9)
-    player4 = cards.distribute(9)
-
+    # dristibuting cards among players
+    player1 = cards.Distribute(9)
+    player2 = cards.Distribute(9)
+    player3 = cards.Distribute(9)
+    player4 = cards.Distribute(9)
+    # sorting players queue
     player1.sort()
     player2.sort()
     player3.sort()
