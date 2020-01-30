@@ -7,11 +7,11 @@ Created on 25/01/2020
 """
 """
 Problem statement:
-Create InventoryManager to manage the Inventory. 
-    The Inventory Manager will use InventoryFactory to 
-    create Inventory Object from JSON. The InventoryManager 
-    will call each Inventory Object in its list to calculate 
-    the Inventory Price and then call the Inventory Object to return 
+Create InventoryManager to manage the Inventory.
+    The Inventory Manager will use InventoryFactory to
+    create Inventory Object from JSON. The InventoryManager
+    will call each Inventory Object in its list to calculate
+    the Inventory Price and then call the Inventory Object to return
     the JSON String. The main program will be with InventoryManager
 """
 
@@ -20,30 +20,30 @@ class InventoryFactory:
     def __init__(self):
         self.item = dict(Rice=[], Pulses=[], Wheat=[])
 
-    def addValues(self, itemType, name, weight, price_per_kg):
-        self.item[itemType].append(
+    def add_values(self, item_type, name, weight, price_per_kg):
+        self.item[item_type].append(
             {"name": name, "weight": weight, "price_per_kg": price_per_kg}
         )
 
-    def addTotalPrice(self, itemType, subItem, totalPrice):
-        self.item[itemType][subItem]["total_price"] = totalPrice
+    def add_total_price(self, item_type, sub_item, total_price):
+        self.item[item_type][sub_item]["total_price"] = total_price
 
-    def getDetails(self):
+    def get_details(self):
         return json.dumps(self.item, indent=4)
 
 
 class InventoryManager:
     def __init__(self):
-        self.inventoryObject = InventoryFactory()
+        self.inventory_object = InventoryFactory()
 
-    def addStock(self):
+    def add_stock(self):
         for _ in range(
             int(input("Enter the number of items you want to add to rice : "))
         ):
             name = input("name : ")
             weight = int(input("weight : "))
             price = int(input("price : "))
-            self.inventoryObject.addValues("Rice", name, weight, price)
+            self.inventory_object.add_values("Rice", name, weight, price)
 
         for _ in range(
             int(input("Enter the number of items you want to add to Pulses : "))
@@ -51,7 +51,7 @@ class InventoryManager:
             name = input("name : ")
             weight = int(input("weight : "))
             price = int(input("price : "))
-            self.inventoryObject.addValues("Pulses", name, weight, price)
+            self.inventory_object.add_values("Pulses", name, weight, price)
 
         for _ in range(
             int(input("Enter the number of items you want to add to Wheat : "))
@@ -59,24 +59,24 @@ class InventoryManager:
             name = input("name : ")
             weight = int(input("weight : "))
             price = int(input("price : "))
-            self.inventoryObject.addValues("Wheat", name, weight, price)
+            self.inventory_object.add_values("Wheat", name, weight, price)
 
-    def calculatePrice(self):
-        stock = json.loads(self.inventoryObject.getDetails())
+    def calculate_price(self):
+        stock = json.loads(self.inventory_object.get_details())
 
-        for itemType in stock:
-            for subItem in range(0, len(stock[itemType])):
+        for item_type in stock:
+            for sub_item in range(0, len(stock[item_type])):
                 total_price = (
-                    stock[itemType][subItem]["weight"]
-                    * stock[itemType][subItem]["price_per_kg"]
+                    stock[item_type][sub_item]["weight"]
+                    * stock[item_type][sub_item]["price_per_kg"]
                 )
-                self.inventoryObject.addTotalPrice(itemType, subItem, total_price)
-        return self.inventoryObject.getDetails()
+                self.inventory_object.add_total_price(item_type, sub_item, total_price)
+        return self.inventory_object.get_details()
 
 
 if __name__ == "__main__":
     print("Inventory Management Program")
     manager = InventoryManager()
-    manager.addStock()
+    manager.add_stock()
     print("Final inventory :")
-    print(manager.calculatePrice())
+    print(manager.calculate_price())
