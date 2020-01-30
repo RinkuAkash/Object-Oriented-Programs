@@ -1,3 +1,6 @@
+from node import node
+
+
 """
 Created on 28/01/2020
 @author: B Akash
@@ -8,29 +11,27 @@ Further maintain DateTime of the transaction in a Queue
  implemented using Linked List to indicate when the transactions were done.
 """
 
-from node import node
-
 
 class Queue:
     def __init__(self):
         self.front = None
         self.rear = None
 
-    def addFront(self, dateTime):
+    def add_front(self, dateTime):
         if self.front == self.rear is None:
             self.front = self.rear = node(dateTime)
         else:
             self.front.prev = node(dateTime)
             self.front = self.front.prev
 
-    def addRear(self, dateTime):
+    def add_rear(self, dateTime):
         if self.rear == self.front is None:
             self.rear = self.front = dateTime
         else:
             self.rear.next = node(dateTime)
             self.rear = self.rear.next
 
-    def deleteFront(self):
+    def delete_front(self):
         if self.front is None:
             return False
         else:
@@ -38,7 +39,7 @@ class Queue:
             self.front.prev = None
             return True
 
-    def deleteRear(self):
+    def delete_rear(self):
         if self.rear is None:
             return False
         else:

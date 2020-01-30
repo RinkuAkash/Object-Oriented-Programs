@@ -1,3 +1,7 @@
+import json
+from datetime import datetime
+
+
 """
 Created on 28/01/2020
 @author: B Akash
@@ -14,15 +18,12 @@ The StockAccount class also maintains a list of CompanyShares object
   if CompanyShares are available and accordingly update or create an Object.
 """
 
-import json
-from datetime import datetime
-
 
 class StockAccount:
     def __init__(self, filename):
         self.account = json.load(filename)
 
-    def valueOf(self):
+    def value_of(self):
         return self.account["userDetails"][0]["total_value"]
 
     def buy(self, amount, shares, symbol):
@@ -68,14 +69,14 @@ class StockAccount:
         with open(filename, "w") as json_file:
             json.dump(self.account, json_file, indent=4)
 
-    def printReport(self):
-        userDetails = self.account["userDetails"][0]
+    def print_report(self):
+        user_details = self.account["userDetails"][0]
         print("--------------------------------------------")
-        print("Name :", userDetails["name"])
-        print("Shares :", userDetails["shares"])
-        print("Total value :", userDetails["total_value"])
+        print("Name :", user_details["name"])
+        print("Shares :", user_details["shares"])
+        print("Total value :", user_details["total_value"])
         print("Transaction")
-        for info in userDetails["transactions"]:
+        for info in user_details["transactions"]:
             print(info)
         print("Stocks")
         for symbol in self.account["stocks"]:

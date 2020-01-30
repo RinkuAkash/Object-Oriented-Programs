@@ -31,9 +31,8 @@ class LinkedList:
                 temp.next.prev = temp.prev
                 temp.prev.next = temp.next
 
-    def show_Data(self):
+    def show_data(self):
         temp = self.head
         while temp is not None:
             print(temp.data)
             temp = temp.next
-

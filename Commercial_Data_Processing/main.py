@@ -1,26 +1,26 @@
-from LinkedList import LinkedList
+from linked_list import LinkedList
 from stack import Stack
 from queue import Queue
-from StockAccount import *
-from Companies import *
+from stock_account import *
+from companies import *
 import json
 
 if __name__ == "__main__":
     print("Commercial Data Processing")
 
-    llist = LinkedList()
+    linked_list = LinkedList()
     while True:
         print("Enter 1 to create account\n2 to access account")
         print("3 to add company share\n4 to remove company share")
         print("5 to show companies shares")
         option = int(input())
         if option == 1:
-            userName = input("Enter your name : ")
-            accountFile = open(userName + ".json", "w+")
+            user_name = input("Enter your name : ")
+            account_file = open(user_name + ".json", "w+")
             account = {
                 "userDetails": [
                     {
-                        "name": userName,
+                        "name": user_name,
                         "shares": 0,
                         "total_value": 0,
                         "transactions": [],
@@ -28,38 +28,38 @@ if __name__ == "__main__":
                 ],
                 "Stocks": [],
             }
-            json.dump(account, accountFile)
+            json.dump(account, account_file)
             print("Account created successfully")
 
         elif option == 2:
             filename = input("Enter filename (with extension) : ")
             try:
-                accountFile = open(filename)
+                account_file = open(filename)
                 break
             except FileNotFoundError:
                 print("Account not available")
 
         elif option == 3:
-            SharePrice = int(input("Enter share price : "))
-            StockName = input("Enter Stock name : ")
-            StockSymbol = input("Enter the stock symbol : ")
-            NoOfShare = int(input("Enter the no. of shares : "))
+            share_price = int(input("Enter share price : "))
+            stock_name = input("Enter Stock name : ")
+            stock_symbol = input("Enter the stock symbol : ")
+            number_of_share = int(input("Enter the no. of shares : "))
             data = {
-                "SharePrice": SharePrice,
-                "StockName": StockName,
-                "StockSymbol": StockSymbol,
-                "NoOfShare": NoOfShare,
+                "SharePrice": share_price,
+                "StockName": stock_name,
+                "StockSymbol": stock_symbol,
+                "NoOfShare": number_of_share,
             }
-            llist.insert(data)
+            linked_list.insert(data)
 
         elif option == 4:
-            StockSymbol = input("Enter Stock symbol : ")
-            llist.delete(StockSymbol)
+            stock_symbol = input("Enter Stock symbol : ")
+            linked_list.delete(stock_symbol)
 
         elif option == 5:
-            llist.show_Data()
+            linked_list.show_data()
 
-    account = StockAccount(accountFile)
+    account = StockAccount(account_file)
     companies = Companies()
     stack = Stack()
     queue = Queue()
@@ -77,10 +77,10 @@ if __name__ == "__main__":
         option = int(input())
 
         if option == 1:
-            print(account.valueOf())
+            print(account.value_of())
 
         elif option == 2:
-            companies.printList()
+            companies.print_stock()
             symbol = input("Enter symbol : ")
             shares = int(input("Enter no of shares : "))
             check = companies.calculate_price(symbol, shares)
@@ -90,7 +90,7 @@ if __name__ == "__main__":
                 amount = check
                 account.buy(amount, shares, symbol)
                 stack.purchase(symbol)
-                queue.addFront(datetime.now().isoformat())
+                queue.add_front(datetime.now().isoformat())
                 print("Transaction successfull")
 
         elif option == 3:
@@ -100,7 +100,7 @@ if __name__ == "__main__":
             if share_price > -1 and account.sell(shares, symbol, share_price):
                 companies.add_shares(symbol, shares)
                 stack.sell()
-                queue.deleteRear()
+                queue.delete_rear()
                 print("Transaction successful")
             else:
                 print("Transaction unsuccessful")
@@ -110,7 +110,7 @@ if __name__ == "__main__":
             companies.save()
 
         elif option == 5:
-            account.printReport()
+            account.print_report()
 
         elif option == 6:
             stack.show()
