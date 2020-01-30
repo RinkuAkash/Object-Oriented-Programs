@@ -1,5 +1,5 @@
-from Doctors import Doctors
-from Patients import Patients
+from doctors import Doctors
+from patients import Patients
 
 if __name__ == "__main__":
 
@@ -23,25 +23,32 @@ if __name__ == "__main__":
                 print("0. exit")
 
                 option = int(input())
+
                 if option == 2:
                     typeOfSearch = input("Enter specific type to search : ")
                     specialization = input("Enter specialization : ")
                     doctor.search(typeOfSearch, specialization)
+
                 elif option == 3:
                     name = input("Enter doctor name : ")
                     doctor.report(name)
+
                 elif option == 1:
                     typeOfSearch = input("Enter specific type to search : ")
                     specialization = input("Enter specialization : ")
                     patient.search(typeOfSearch, specialization)
+
                 elif option == 4:
-                    doctor.popularDoctor()
+                    doctor.popular_doctor()
+
                 elif option == 5:
-                    doctor.popularSpecialization()
+                    doctor.popular_specialization()
+
                 elif option == 0:
                     doctor.save()
                     patient.save()
                     break
+
                 else:
                     print("invalid input")
         # patient role
@@ -64,9 +71,7 @@ if __name__ == "__main__":
                         doctor_id = input("Enter doctor id : ")
                         date = input("enter date (dd/mm/yyyy) :")
                         if doctor.set_appointment(date, doctor_id, patient_id):
-                            if patient.takeAppointment(
-                                date, doctor_id, patient_id
-                                  ):
+                            if patient.take_appointment(date, doctor_id, patient_id):
                                 print("Appoinment successful")
                             else:
                                 print("Appointment unsuccessful")
