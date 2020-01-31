@@ -10,3 +10,4 @@ if __name__ == "__main__":
               "at",
               player1.position,
               "position")
+    print("Dice roll count : ", player1.roll_count)

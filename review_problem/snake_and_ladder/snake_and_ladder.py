@@ -9,9 +9,11 @@ class SnakeAndLadder:
     def __init__(self, user_name):
         self.user_name = user_name
         self.position = 0
+        self.roll_count = 0
 
     def play_game(self):
         steps = roll_die()
+        self.roll_count += 1
         option = np.random.randint(0, 3)
         if option == 0:
             self.position -= steps
@@ -22,8 +24,7 @@ class SnakeAndLadder:
             self.position += steps
             print("You got ladder")
         else:
-            temporary_value = self.position
-            if temporary_value + steps > 100:
+            if self.position + steps > 100:
                 print("No moment")
             else:
                 self.position += steps
