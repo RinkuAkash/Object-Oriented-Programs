@@ -12,4 +12,10 @@ class SnakeAndLadder:
 
     def play_game(self):
         steps = roll_die()
-        self.position += steps
+        option = int(input())
+        if option == 2:
+            self.position -= steps
+            if self.position < 0:
+                self.position = 0
+        elif option == 3:
+            self.position += steps
