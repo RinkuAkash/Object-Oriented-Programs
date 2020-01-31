@@ -22,7 +22,13 @@ class SnakeAndLadder:
             self.position += steps
             print("You got ladder")
         else:
-            if self.position + steps > 100:
+            temporary_value = self.position
+            if temporary_value + steps > 100:
                 print("No moment")
             else:
                 self.position += steps
+                if self.position == 100:
+                    print("Congratulations, you won")
+                    return False
+
+        return True
