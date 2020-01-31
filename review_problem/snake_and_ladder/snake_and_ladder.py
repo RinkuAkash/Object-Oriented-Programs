@@ -21,8 +21,13 @@ class SnakeAndLadder:
                 self.position = 0
             print("You got snake")
         elif option == 1:
-            self.position += steps
-            print("You got ladder")
+            if self.position + steps > 100:
+                print("No moment")
+            elif self.position + steps == 100:
+                print("Congratulations, you won")
+            else:
+                self.position += steps
+                print("You got ladder")
         else:
             if self.position + steps > 100:
                 print("No moment")
